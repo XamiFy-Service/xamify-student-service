@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS student_db;
+USE student_db;
+
+CREATE TABLE students (
+    id INT AUTO_INCREMENT PRIMARY KEY, -- Or UUID if preferred
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    registered_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
