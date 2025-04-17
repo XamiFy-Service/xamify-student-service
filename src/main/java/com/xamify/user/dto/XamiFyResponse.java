@@ -1,4 +1,4 @@
-package com.xamify.student.dto;
+package com.xamify.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

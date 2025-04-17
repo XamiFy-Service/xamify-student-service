@@ -1,4 +1,4 @@
-package com.xamify.student.model;
+package com.xamify.user.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

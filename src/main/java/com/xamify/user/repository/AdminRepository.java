@@ -1,6 +1,6 @@
-package com.xamify.student.repository;
+package com.xamify.user.repository;
 
-import com.xamify.student.model.Admin;
+import com.xamify.user.model.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

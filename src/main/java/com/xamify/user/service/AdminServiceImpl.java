@@ -1,10 +1,11 @@
-package com.xamify.student.service;
+package com.xamify.user.service;
 
-import com.xamify.student.dto.AdminResponse;
-import com.xamify.student.dto.LoginRequest;
-import com.xamify.student.dto.XamiFyResponse;
-import com.xamify.student.model.Admin;
-import com.xamify.student.repository.AdminRepository;
+import com.xamify.user.dto.AdminResponse;
+import com.xamify.user.dto.LoginRequest;
+import com.xamify.user.dto.XamiFyResponse;
+import com.xamify.user.model.Admin;
+import com.xamify.user.repository.AdminRepository;
+import com.xamify.user.util.PasswordValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -25,14 +26,31 @@ public class AdminServiceImpl implements AdminService{
     @Autowired
     private XamiFyResponse xamiFyResponse;
 
+    @Autowired
+    private PasswordValidator passwordValidator;
+
     @Override
-    public ResponseEntity<XamiFyResponse> registerAdmin(Admin admin) {
+    public ResponseEntity<XamiFyResponse<AdminResponse>> registerAdmin(Admin admin) {
+        String errorMessage = passwordValidator.isValidPassword(admin.getPassword());
+        if(errorMessage != null){
+            XamiFyResponse<AdminResponse> response = new XamiFyResponse<>();
+            response.setStatus("Error ❌");
+            response.setMessage(errorMessage);
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
         admin.setAdminCode(adminCode);
         adminRepository.save(admin);
-        xamiFyResponse.setStatus("Success ✅");
-        xamiFyResponse.setMessage("Admin added successfully");
-        xamiFyResponse.setData(admin);
-        return new ResponseEntity<>(xamiFyResponse, HttpStatus.OK);
+
+        AdminResponse adminResponse = new AdminResponse();
+        adminResponse.setAdminId(admin.getAdminId());
+        adminResponse.setName(admin.getName());
+        adminResponse.setEmail(admin.getEmail());
+
+        XamiFyResponse<AdminResponse> response = new XamiFyResponse<>();
+        response.setStatus("Success ✅");
+        response.setMessage("Admin added successfully");
+        response.setData(adminResponse);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @Override

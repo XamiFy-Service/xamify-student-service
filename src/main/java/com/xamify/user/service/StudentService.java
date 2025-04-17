@@ -1,7 +1,7 @@
-package com.xamify.student.service;
+package com.xamify.user.service;
 
-import com.xamify.student.dto.LoginRequest;
-import com.xamify.student.model.Student;
+import com.xamify.user.dto.LoginRequest;
+import com.xamify.user.model.Student;
 import java.util.Optional;
 
 public interface StudentService {

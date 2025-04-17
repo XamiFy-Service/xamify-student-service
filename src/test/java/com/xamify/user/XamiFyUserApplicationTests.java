@@ -1,10 +1,10 @@
-package com.xamify.student;
+package com.xamify.user;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class StudentApplicationTests {
+class XamiFyUserApplicationTests {
 
 	@Test
 	void contextLoads() {

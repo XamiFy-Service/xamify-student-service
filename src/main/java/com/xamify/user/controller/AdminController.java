@@ -1,10 +1,10 @@
-package com.xamify.student.controller;
+package com.xamify.user.controller;
 
-import com.xamify.student.dto.AdminResponse;
-import com.xamify.student.dto.LoginRequest;
-import com.xamify.student.dto.XamiFyResponse;
-import com.xamify.student.model.Admin;
-import com.xamify.student.service.AdminService;
+import com.xamify.user.dto.AdminResponse;
+import com.xamify.user.dto.LoginRequest;
+import com.xamify.user.dto.XamiFyResponse;
+import com.xamify.user.model.Admin;
+import com.xamify.user.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +19,7 @@ public class AdminController {
     private AdminService adminService;
 
     @PostMapping("/register")
-    private ResponseEntity<XamiFyResponse> registerAdmin(@RequestBody Admin admin){
+    private ResponseEntity<XamiFyResponse<AdminResponse>> registerAdmin(@RequestBody Admin admin){
         return adminService.registerAdmin(admin);
     }
 

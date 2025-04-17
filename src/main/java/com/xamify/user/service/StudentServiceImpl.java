@@ -1,8 +1,8 @@
-package com.xamify.student.service;
+package com.xamify.user.service;
 
-import com.xamify.student.dto.LoginRequest;
-import com.xamify.student.model.Student;
-import com.xamify.student.repository.StudentRepository;
+import com.xamify.user.dto.LoginRequest;
+import com.xamify.user.model.Student;
+import com.xamify.user.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
