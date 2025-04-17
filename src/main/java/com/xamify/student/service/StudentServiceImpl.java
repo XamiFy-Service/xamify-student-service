@@ -1,5 +1,6 @@
 package com.xamify.student.service;
 
+import com.xamify.student.dto.LoginRequest;
 import com.xamify.student.model.Student;
 import com.xamify.student.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Optional<Student> login(String email, String password) {
-        return studentRepository.findByEmailAndPassword(email, password);
+    public Optional<Student> login(LoginRequest loginRequest) {
+        return studentRepository.findByEmailAndPassword(loginRequest.getEmail(), loginRequest.getPassword());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.xamify.student.controller;
 
+import com.xamify.student.dto.LoginRequest;
 import com.xamify.student.model.Student;
 import com.xamify.student.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +32,9 @@ public class StudentController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Student> login(@RequestBody Map<String, String> loginData) {
-        String email = loginData.get("email");
-        String password = loginData.get("password");
+    public ResponseEntity<Student> login(@RequestBody LoginRequest loginRequest) {
 
-        Optional<Student> optionalStudent = studentService.login(email, password);
+        Optional<Student> optionalStudent = studentService.login(loginRequest);
 
         if (optionalStudent.isPresent()) {
             return ResponseEntity.ok(optionalStudent.get()); // 200 OK with student data
