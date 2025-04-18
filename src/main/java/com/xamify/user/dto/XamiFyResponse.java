@@ -10,5 +10,5 @@ import org.springframework.stereotype.Component;
 public class XamiFyResponse<X> {
     private String status;
     private String message;
-    private X data;
+    private X data; //xamiFy.com$100
 }
